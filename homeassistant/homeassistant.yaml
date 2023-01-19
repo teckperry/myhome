@@ -1,0 +1,35 @@
+version: '3.8'
+
+networks:
+  front-network:
+    name: front-network
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.21.0.0/24"
+          gateway: "172.21.0.1"
+  back-network:
+    name: back-network
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.22.0.0/24"
+          gateway: "172.22.0.1"
+
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant
+    volumes:
+      - ./homeassistant-data/config:/config
+      - ./homeassistant-data/etc/localtime:/etc/localtime:ro
+      - ./homeassistant-data/data/media:/data/media:ro
+    restart: unless-stopped
+    privileged: true
+    ports: 
+      - 8123:8123
+    networks:
+      front-network:
+        ipv4_address: 172.21.0.2
+      back-network:
+        ipv4_address: 172.22.0.2

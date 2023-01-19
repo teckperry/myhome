@@ -1,0 +1,27 @@
+version: '3.8'
+
+networks:
+  front-network:
+    name: front-network
+    external: true
+  back-network:
+    name: back-network
+    external: true
+
+services:
+  grafana:
+    container_name: grafana
+    restart: always
+    user: 'root'
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+    volumes:
+      - ./grafana-data/var/lib/grafana:/var/lib/grafana
+    networks:
+      front-network:
+        ipv4_address: 172.21.0.4
+      back-network:
+        ipv4_address: 172.22.0.4
