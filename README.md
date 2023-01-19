@@ -19,7 +19,7 @@ PASSWORD={mosquitto_password}
 4) Insert *mosquitto_user* and *mosquitto_password* from the env file (**1a**)
 
 ### 3b. InfluxDB Configuration
-1) Go to InfluxDB (172.22.0.3:8086) using the Sidebar
+1) Go to InfluxDB (172.22.0.3:8086)
 2) Create a new account using:
     - Organization={influxdb_org}
     - Bucket={influxdb_bucket}
@@ -29,7 +29,7 @@ PASSWORD={mosquitto_password}
 6) Copy the generated Api Token
 
 ### 3c. Grafana Configuration
-1) Go to Grafana (172.22.0.4:3000) using the Sidebar
+1) Go to Grafana (172.22.0.4:3000)
 2) Login using admin (user and password)
 3) Change the admin password
 4) Go to Settings / Data Sources
