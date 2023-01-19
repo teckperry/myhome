@@ -1,0 +1,7 @@
+*.env
+portainer/portainer-data
+homeassistant/homeassistant-data
+influxdb/influxdb-data
+grafana/grafana-data
+mosquitto/mosquitto-data
+secrets.yaml
