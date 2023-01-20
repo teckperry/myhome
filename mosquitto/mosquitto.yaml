@@ -10,6 +10,7 @@ services:
   mosquitto:
     image: eclipse-mosquitto
     container_name: mosquitto
+    restart: always
     volumes:
       - ./mosquitto-data/mosquitto:/mosquitto
       - ./mosquitto-data/mosquitto/data:/mosquitto/data
