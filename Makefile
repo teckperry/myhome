@@ -2,23 +2,23 @@
 #      MAIN      #
 # ############## #
 setup:
-# Setup Portainer
+	# Setup Portainer
 	@$(MAKE) setup-container target=portainer
 	@$(MAKE) start-container target=portainer
-# Setup Home Assistant
+	# Setup Home Assistant
 	@$(MAKE) setup-container target=homeassistant
 	@$(MAKE) start-container target=homeassistant
-# Setup Mosquitto
+	# Setup Mosquitto
 	@$(MAKE) setup-container target=mosquitto
 	@$(MAKE) config-mosquitto-folders
 	@$(MAKE) start-container target=mosquitto
 	@$(MAKE) config-mosquitto-user
 	@$(MAKE) config-mosquitto-config
 	@$(MAKE) restart-container target=mosquitto
-# Setup InfluxDB
+	# Setup InfluxDB
 	@$(MAKE) setup-container target=influxdb
 	@$(MAKE) start-container target=influxdb
-# Setup Grafana
+	# Setup Grafana
 	@$(MAKE) setup-container target=grafana
 	@$(MAKE) start-container target=grafana
 
