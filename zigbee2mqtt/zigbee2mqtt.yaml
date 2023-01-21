@@ -1,0 +1,29 @@
+version: '3.8'
+
+networks:
+  front-network:
+    name: front-network
+  back-network:
+    name: back-network
+
+services:
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    volumes:
+      - ./zigbee2mqtt-data/app/data:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8080:8080
+    environment:
+      - TZ=Europe/Rome
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220812135559-if00:/dev/ttyACM0
+    networks:
+      front-network:
+        ipv4_address: 172.21.0.6
+      back-network:
+        ipv4_address: 172.22.0.6
