@@ -42,13 +42,13 @@ Welcome and enjoy!
 1. [Config Environment variables](#1-config-environment-variables)
 2. [Setup containers](#2-setup-containers)
 3. [Setup Home Assistant](#3-setup-home-assistant)
-    1. [Mosquitto Configuration](#a-mosquitto-configuration)
-    2. [InfluxDB Configuration](#b-influxdb-configuration)
-    3. [Grafana Configuration](#c-grafana-configuration)
+    1. [Mosquitto Configuration](#1-mosquitto-configuration)
+    2. [InfluxDB Configuration](#2-influxdb-configuration)
+    3. [Grafana Configuration](#3-grafana-configuration)
 4. [Config Home Assistant Secrets](#4-config-home-assistant-secrets)
-    1. [Portainer Secrets](#a-portainer-secrets)
-    2. [Grafana Secrets](#b-grafana-secrets)
-    3. [InfluxDB Secrets](#c-influxdb-secrets)
+    1. [Portainer Secrets](#1-portainer-secrets)
+    2. [Grafana Secrets](#2-grafana-secrets)
+    3. [InfluxDB Secrets](#3-influxdb-secrets)
 5. [Config and Restart](#5-config-and-restart)
 6. [Standard Network Map](#6-standard-network-map)
 
@@ -115,7 +115,7 @@ PASSWORD={mosquitto_password}
 
 ## 4. Config Home Assistant Secrets
 
-#### Portainer Secrets
+#### 1. Portainer Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
@@ -124,7 +124,7 @@ portainer_url: {portainer_url}
 ```
 
 
-#### Grafana Secrets
+#### 2. Grafana Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
@@ -133,7 +133,7 @@ grafana_url: {grafana_url}
 ```
 
 
-#### InfluxDB Secrets
+#### 3. InfluxDB Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
