@@ -1,6 +1,7 @@
 # About
 
 This is yet another Home Assistant configuration.
+
 Welcome and enjoy!
 
 
@@ -85,13 +86,14 @@ PASSWORD={mosquitto_password}
 #### b. InfluxDB Configuration
 
 1. Go to InfluxDB (`172.22.0.3:8086`)
-2. Create a new account using:
-3. Insert your InfluxDB *organization* (`{influxdb_org}`)
-4. Insert your InfluxDB *bucket* (`{influxdb_bucket}`)
-5. Go to `Load data` (the second sidebar button)
-6. Click on `API TOKENS` tab
-7. Generate a new Api Token
-8. Copy the generated Api Token (`{influxdb_token}`)
+2. Create a new account:
+    - Insert *username* and *password*
+    - Insert your InfluxDB *organization* (`{influxdb_org}`)
+    - Insert your InfluxDB *bucket* (`{influxdb_bucket}`)
+3. Go to `Load data` (the second sidebar button)
+4. Click on `API TOKENS` tab
+5. Generate a new Api Token
+6. Copy the generated Api Token (`{influxdb_token}`)
 
 
 #### c. Grafana Configuration
@@ -104,10 +106,10 @@ PASSWORD={mosquitto_password}
 6. Change Query Language from `InfluxQL` to `Flux`
 7. Deselect `Basic auth` configuration
 8. Insert these params:
-    - URL `http://influxdb:8086`
-    - Organization `{influxdb_org}`
-    - Token `{influxdb_token}`
-    - Bucket `{influxdb_bucket}`
+    - Insert URL `http://influxdb:8086`
+    - Insert your InfluxDB *organization* (`{influxdb_org}`) (**3b.2**)
+    - Insert your InfluxDB *token* (`{influxdb_token}`) (**3b.6**)
+    - Insert your InfluxDB *bucket* (`{influxdb_bucket}`) (**3b.2**)
 9. Click `Save and test`
 
 
