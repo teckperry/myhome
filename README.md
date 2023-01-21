@@ -3,13 +3,15 @@
 This is yet another Home Assistant configuration.
 Welcome and enjoy!
 
----
 
 # Requirements
+
 - docker
 - docker-compose
 
+
 # Commands
+
 - make
 - rm
 - cp
@@ -24,6 +26,7 @@ Welcome and enjoy!
 - docker stop
 - docker-compose up
 
+
 # Containers list
 
 - Home Assistant
@@ -33,25 +36,28 @@ Welcome and enjoy!
 - Grafana
 
 
----
 # Table of Contents
-- [How To](#how-to)
-    1. [Config Environment variables](#1-config-environment-variables)
-    2. [Setup containers](#2-setup-containers)
-    3. [Setup Home Assistant](#3-setup-home-assistant)
-        a. [Mosquitto Configuration](#a-mosquitto-configuration)
-        b. [InfluxDB Configuration](#b-influxdb-configuration)
-        c. [Grafana Configuration](#c-grafana-configuration)
-    4. [Config Home Assistant Secrets](#4-config-home-assistant-secrets)
-        a. [Portainer](#a-portainer)
-        b. [Grafana](#b-grafana)
-        c. [InfluxDB](#c-influxdb)
-    5. [Config and Restart](#5-config-and-restart)
-- [Standard Network Map](#6-standard-network-map)
----
+
+1. [Config Environment variables](#1-config-environment-variables)
+2. [Setup containers](#2-setup-containers)
+3. [Setup Home Assistant](#3-setup-home-assistant)
+    a. [Mosquitto Configuration](#a-mosquitto-configuration)
+    b. [InfluxDB Configuration](#b-influxdb-configuration)
+    c. [Grafana Configuration](#c-grafana-configuration)
+4. [Config Home Assistant Secrets](#4-config-home-assistant-secrets)
+    a. [Portainer](#a-portainer)
+    b. [Grafana](#b-grafana)
+    c. [InfluxDB](#c-influxdb)
+5. [Config and Restart](#5-config-and-restart)
+6. [Standard Network Map](#6-standard-network-map)
+
+
 # How To
+
 ## 1. Config Environment variables
-### Mosquitto
+
+#### Mosquitto
+
 1. Create `mosquitto.env` into `myconfig/envs`
 2. Add these variables:
 ```
@@ -60,18 +66,24 @@ PASSWORD={mosquitto_password}
 ```
 
 ## 2. Setup containers
+
 1. Open the terminal
 2. Change directory to the root folder of this project
 3. Exec `make setup` command
 
+
 ## 3. Setup Home Assistant
-### a. Mosquitto Configuration
+
+#### a. Mosquitto Configuration
+
 1) Go to `Home Assistant / Settings / Integrations`
 2) Search `MQTT`
 3) Insert *broker* `172.22.0.5`
 4) Insert *user* (`{mosquitto_user}`) and *password* (`{mosquitto_password}`) from the `mosquitto.env` file (**1.2**)
 
-### b. InfluxDB Configuration
+
+#### b. InfluxDB Configuration
+
 1. Go to InfluxDB (`172.22.0.3:8086`)
 2. Create a new account using:
 3. Insert your InfluxDB *organization* (`{influxdb_org}`)
@@ -81,7 +93,9 @@ PASSWORD={mosquitto_password}
 7. Generate a new Api Token
 8. Copy the generated Api Token (`{influxdb_token}`)
 
-### c. Grafana Configuration
+
+#### c. Grafana Configuration
+
 1. Go to Grafana (`172.22.0.4:3000`)
 2. Login using `admin` (user and password)
 3. Change password
@@ -96,22 +110,29 @@ PASSWORD={mosquitto_password}
     - Bucket `{influxdb_bucket}`
 9. Click `Save and test`
 
+
 ## 4. Config Home Assistant Secrets
-### a. Portainer
+
+#### a. Portainer
+
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
 ```
 portainer_url: {portainer_url}
 ```
 
-### b. Grafana
+
+#### b. Grafana
+
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
 ```
 grafana_url: {grafana_url}
 ```
 
-### c. InfluxDB
+
+#### c. InfluxDB
+
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
 ```
@@ -123,15 +144,17 @@ influxdb_org: {influxdb_org}
 influxdb_bucket: {influxdb_bucket}
 ```
 
-### 5. Config and Restart
+
+## 5. Config and Restart
+
 1) Open the terminal
 2) Change directory to the root folder of this project
 3) Exec `make config-homeassistant` command
 4) Exec `make restart` command
 
----
 
-### Standard Network Map
+## 6. Standard Network Map
+
 | Name | Port | Front-Network IP | Back-Network IP |
 | - | - | - | - |
 | Gateway | - | 172.21.0.1 | 172.22.0.1 |
