@@ -42,13 +42,13 @@ Welcome and enjoy!
 1. [Config Environment variables](#1-config-environment-variables)
 2. [Setup containers](#2-setup-containers)
 3. [Setup Home Assistant](#3-setup-home-assistant)
-    a. [Mosquitto Configuration](#a-mosquitto-configuration)
-    b. [InfluxDB Configuration](#b-influxdb-configuration)
-    c. [Grafana Configuration](#c-grafana-configuration)
+    1. [Mosquitto Configuration](#a-mosquitto-configuration)
+    2. [InfluxDB Configuration](#b-influxdb-configuration)
+    3. [Grafana Configuration](#c-grafana-configuration)
 4. [Config Home Assistant Secrets](#4-config-home-assistant-secrets)
-    a. [Portainer](#a-portainer)
-    b. [Grafana](#b-grafana)
-    c. [InfluxDB](#c-influxdb)
+    1. [Portainer Secrets](#a-portainer-secrets)
+    2. [Grafana Secrets](#b-grafana-secrets)
+    3. [InfluxDB Secrets](#c-influxdb-secrets)
 5. [Config and Restart](#5-config-and-restart)
 6. [Standard Network Map](#6-standard-network-map)
 
@@ -57,7 +57,7 @@ Welcome and enjoy!
 
 ## 1. Config Environment variables
 
-#### Mosquitto
+#### 1. Mosquitto
 
 1. Create `mosquitto.env` into `myconfig/envs`
 2. Add these variables:
@@ -75,15 +75,15 @@ PASSWORD={mosquitto_password}
 
 ## 3. Setup Home Assistant
 
-#### a. Mosquitto Configuration
+#### 1. Mosquitto Configuration
 
 1) Go to `Home Assistant / Settings / Integrations`
 2) Search `MQTT`
 3) Insert *broker* `172.22.0.5`
-4) Insert *user* (`{mosquitto_user}`) and *password* (`{mosquitto_password}`) from the `mosquitto.env` file (**1.2**)
+4) Insert *user* (`{mosquitto_user}`) and *password* (`{mosquitto_password}`) from the `mosquitto.env` file (**1.1.2**)
 
 
-#### b. InfluxDB Configuration
+#### 2. InfluxDB Configuration
 
 1. Go to InfluxDB (`172.22.0.3:8086`)
 2. Create a new account:
@@ -96,7 +96,7 @@ PASSWORD={mosquitto_password}
 6. Copy the generated Api Token (`{influxdb_token}`)
 
 
-#### c. Grafana Configuration
+#### 3. Grafana Configuration
 
 1. Go to Grafana (`172.22.0.4:3000`)
 2. Login using `admin` (user and password)
@@ -107,15 +107,15 @@ PASSWORD={mosquitto_password}
 7. Deselect `Basic auth` configuration
 8. Insert these params:
     - Insert URL `http://influxdb:8086`
-    - Insert your InfluxDB *organization* (`{influxdb_org}`) (**3b.2**)
-    - Insert your InfluxDB *token* (`{influxdb_token}`) (**3b.6**)
-    - Insert your InfluxDB *bucket* (`{influxdb_bucket}`) (**3b.2**)
+    - Insert your InfluxDB *organization* (`{influxdb_org}`) (**3.2.2**)
+    - Insert your InfluxDB *token* (`{influxdb_token}`) (**3.2.6**)
+    - Insert your InfluxDB *bucket* (`{influxdb_bucket}`) (**3.2.2**)
 9. Click `Save and test`
 
 
 ## 4. Config Home Assistant Secrets
 
-#### a. Portainer
+#### Portainer Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
@@ -124,7 +124,7 @@ portainer_url: {portainer_url}
 ```
 
 
-#### b. Grafana
+#### Grafana Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
@@ -133,7 +133,7 @@ grafana_url: {grafana_url}
 ```
 
 
-#### c. InfluxDB
+#### InfluxDB Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
 2) Add these variables:
