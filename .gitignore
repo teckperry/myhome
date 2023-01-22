@@ -4,4 +4,6 @@ homeassistant/homeassistant-data
 influxdb/influxdb-data
 grafana/grafana-data
 mosquitto/mosquitto-data
+zigbee2mqtt/zigbee2mqtt-data
+myconfig/zigbee2mqtt/zigbee2mqtt-data/app/data/configuration.yaml
 secrets.yaml
