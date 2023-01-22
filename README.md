@@ -35,6 +35,7 @@ Welcome and enjoy!
 - InfluxDB
 - Mosquitto
 - Grafana
+- Zigbee2MQTT
 
 
 # Table of Contents
