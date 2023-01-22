@@ -41,6 +41,8 @@ Welcome and enjoy!
 # Table of Contents
 
 1. [Config Environment variables](#1-config-environment-variables)
+    1. [Mosquitto](#1-mosquitto)
+    2. [Zigbee2MQTT](#2-zigbee2mqtt)
 2. [Setup containers](#2-setup-containers)
 3. [Setup Home Assistant](#3-setup-home-assistant)
     1. [Mosquitto Configuration](#1-mosquitto-configuration)
@@ -193,3 +195,4 @@ zigbee2mqtt_url: {zigbee2mqtt_url}:{zigbee2mqtt_frontend_port}
 | InfluxDB | 8086 | 172.21.0.3 | 172.22.0.3 |
 | Grafana | 3000 | 172.21.0.4 | 172.22.0.4 |
 | Mosquitto | 1883, 9001 | 172.21.0.5 | 172.22.0.5 |
+| Zigbee2MQTT | 8080 | 172.21.0.6 | 172.22.0.6 |
