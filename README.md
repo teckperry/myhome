@@ -35,11 +35,14 @@ Welcome and enjoy!
 - InfluxDB
 - Mosquitto
 - Grafana
+- Zigbee2MQTT
 
 
 # Table of Contents
 
 1. [Config Environment variables](#1-config-environment-variables)
+    1. [Mosquitto](#1-mosquitto)
+    2. [Zigbee2MQTT](#2-zigbee2mqtt)
 2. [Setup containers](#2-setup-containers)
 3. [Setup Home Assistant](#3-setup-home-assistant)
     1. [Mosquitto Configuration](#1-mosquitto-configuration)
@@ -65,6 +68,27 @@ Welcome and enjoy!
 USER={mosquitto_user}
 PASSWORD={mosquitto_password}
 ```
+
+#### 2. Zigbee2MQTT
+
+1. Create `zigbee2mqtt.env` into `myconfig/envs`
+2. Add these variables:
+```
+SERIAL_PORT={usb_serial}
+MOSQUITTO_SERVER=mqtt://{mosquitto_ip}:{mosquitto_port}
+MOSQUITTO_USER={mosquitto_user}
+MOSQUITTO_PASSWORD={mosquitto_password}
+ZIGBEE2MQTT_PORT={zigbee2mqtt_frontend_port}
+ZIGBEE2MQTT_URL={zigbee2mqtt_url}:{zigbee2mqtt_frontend_port}
+ZIGBEE2MQTT_CHANNEL={zigbee2mqtt_channel}
+```
+
+##### How to retrieve SERIAL_PORT
+
+1. Exec `ls -l /dev/serial/by-id`
+2. The string before `->` is your Zigbee Adapter Serial, the string after the symbol is your Serial Port.
+3. Change the Zigbee Adapter Serial and the Serial Port into `zigbee2mqtt.yaml` and `homeassistant.yaml`
+
 
 ## 2. Setup containers
 
@@ -123,7 +147,6 @@ PASSWORD={mosquitto_password}
 portainer_url: {portainer_url}
 ```
 
-
 #### 2. Grafana Secrets
 
 1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
@@ -131,7 +154,6 @@ portainer_url: {portainer_url}
 ```
 grafana_url: {grafana_url}
 ```
-
 
 #### 3. InfluxDB Secrets
 
@@ -144,6 +166,14 @@ influxdb_port: {influxdb_port}
 influxdb_token: {influxdb_token}
 influxdb_org: {influxdb_org}
 influxdb_bucket: {influxdb_bucket}
+```
+
+#### 4. Zigbee2MQTT Secrets
+
+1) If not exists create a file `secrets.yaml` into `myconfig/homeassistant/homeassistant-data/config`
+2) Add these variables:
+```
+zigbee2mqtt_url: {zigbee2mqtt_url}:{zigbee2mqtt_frontend_port}
 ```
 
 
@@ -165,3 +195,4 @@ influxdb_bucket: {influxdb_bucket}
 | InfluxDB | 8086 | 172.21.0.3 | 172.22.0.3 |
 | Grafana | 3000 | 172.21.0.4 | 172.22.0.4 |
 | Mosquitto | 1883, 9001 | 172.21.0.5 | 172.22.0.5 |
+| Zigbee2MQTT | 8080 | 172.21.0.6 | 172.22.0.6 |

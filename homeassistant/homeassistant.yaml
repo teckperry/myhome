@@ -28,6 +28,8 @@ services:
     privileged: true
     ports: 
       - 8123:8123
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
     networks:
       front-network:
         ipv4_address: 172.21.0.2
